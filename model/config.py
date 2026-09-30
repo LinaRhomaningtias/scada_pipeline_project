@@ -8,16 +8,42 @@ FEATURES = [
     "compressor_state",
     "energy_consumption",
 ]
+
 TARGET = "target"
 THRESHOLD = 0.50
 HIDDEN_LAYERS = [32, 16, 8]
 
-# Ganti URL berikut setelah repository dan profil anggota sudah tersedia.
-GITHUB_PROJECT_URL = "https://github.com/USERNAME/scada-pipeline-anomaly-detection"
+GITHUB_PROJECT_URL = "https://github.com/LinaRhomaningtias/scada_pipeline_project"
 
 TEAM = [
-    {"name": "Lina Rhomaningtias", "role": "Sains Data", "linkedin": "https://www.linkedin.com/in/USERNAME-LINA/", "github": "https://github.com/USERNAME-LINA"},
-    {"name": "Jacinda Ardina Gestyaki", "role": "Sains Data", "linkedin": "https://www.linkedin.com/in/USERNAME-JACINDA/", "github": "https://github.com/USERNAME-JACINDA"},
-    {"name": "Anggota 3", "role": "Sistem Informasi", "linkedin": "https://www.linkedin.com/in/USERNAME-3/", "github": "https://github.com/USERNAME-3"},
-    {"name": "Anggota 4", "role": "Sistem Informasi", "linkedin": "https://www.linkedin.com/in/USERNAME-4/", "github": "https://github.com/USERNAME-4"},
+    {
+        "name": "Lina Rhomaningtias",
+        "role": "Sains Data",
+        "linkedin": "https://www.linkedin.com/in/lina-rhomaningtias-3771442b9/",
+        "github": "https://github.com/LinaRhomaningtias"
+    },
+    {
+        "name": "Muhammad Rafly Feandika Nugroho",
+        "role": "Sains Data",
+        "linkedin": "https://www.linkedin.com/in/rafli-feandika/",
+        "github": ""
+    },
+    {
+        "name": "Kevin Brema Putra Sinulingga",
+        "role": "Sains Data",
+        "linkedin": "https://www.linkedin.com/in/kevinbremas/",
+        "github": ""
+    },
+    {
+        "name": "Naufal Ricko",
+        "role": "Sains Data",
+        "linkedin": "http://www.linkedin.com/in/ricko-maulana-2a5461261",
+        "github": ""
+    },
+    {
+        "name": "Adenda Khairunisa",
+        "role": "Sains Data",
+        "linkedin": "https://www.linkedin.com/in/adenda-khairunisa-622693433/",
+        "github": ""
+    },
 ]
