@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SCADA Pipeline | Anomaly Detection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-icon">⌁</div><div><strong>SCADA Pipeline</strong><span>Anomaly Detection</span></div></div>
+    <nav>
+      <button class="nav-btn active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav-btn" data-page="dataset">▦ <span>Dataset</span></button>
+      <button class="nav-btn" data-page="prediction">⌕ <span>Prediction</span></button>
+      <button class="nav-btn" data-page="team">♙ <span>Our Team</span></button>
+    </nav>
+    <div class="sidebar-bottom"><div class="status-dot"></div><div><small>Model Status</small><b>Model Ready</b><small>MLP Classifier</small></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><span class="eyebrow">DEEP LEARNING PROJECT</span><h1 id="page-title">SCADA Pipeline Monitoring</h1><p>Deteksi kondisi normal dan anomali pada operasi pipeline berbasis telemetry SCADA.</p></div><div class="top-actions"><span class="badge">● Model Ready</span><a id="github-link" class="github-btn" href="https://github.com/USERNAME/scada-pipeline-anomaly-detection" target="_blank">GitHub ↗</a></div></header>
+
+    <section id="dashboard" class="page active-page">
+      <div class="hero-card"><div><span class="eyebrow">PIPELINE MONITORING</span><h2>Monitor kondisi pipeline dengan MLP</h2><p>Masukkan parameter operasi untuk melihat prediksi Normal atau Anomaly.</p><button class="primary" onclick="showPage('prediction')">Start Prediction →</button></div><div class="pipeline-art">◌<div>PIPELINE<br><strong>SCADA</strong></div></div></div>
+      <div class="stats-grid"><div class="stat-card blue"><span>Total Data</span><strong id="total-data">—</strong><small>records</small></div><div class="stat-card purple"><span>Input Features</span><strong id="feature-count">—</strong><small>sensor parameters</small></div><div class="stat-card green"><span>Normal</span><strong id="normal-count">—</strong><small id="normal-percent">—</small></div><div class="stat-card pink"><span>Anomaly</span><strong id="anomaly-count">—</strong><small id="anomaly-percent">—</small></div></div>
+      <div class="grid two">
+        <div class="card"><div class="card-title"><div><h3>Model Performance</h3><small>MLP Classifier — Test Set</small></div><span class="mini-icon">◈</span></div><div class="metric-list"><div><span>Accuracy</span><b id="accuracy">—</b></div><div><span>Precision</span><b id="precision">—</b></div><div><span>Recall</span><b id="recall">—</b></div><div><span>F1 Score</span><b id="f1">—</b></div></div></div>
+        <div class="card"><div class="card-title"><div><h3>Target Distribution</h3><small>Normal vs Anomaly</small></div><span class="mini-icon pink-icon">◉</span></div><div class="donut-wrap"><div id="donut" class="donut"><div><strong id="donut-total">—</strong><small>Total Data</small></div></div><div class="legend"><div><i class="dot green-dot"></i>Normal <b id="legend-normal">—</b></div><div><i class="dot pink-dot"></i>Anomaly <b id="legend-anomaly">—</b></div></div></div></div>
+      </div>
+      <div class="grid two"><div class="card"><div class="card-title"><div><h3>Training Curve</h3><small>Train vs validation loss</small></div></div><img class="chart-img" src="/assets/charts/loss_curve.png" alt="Training and validation loss curve"></div><div class="card"><div class="card-title"><div><h3>Confusion Matrix</h3><small>Test set classification</small></div></div><img class="chart-img matrix-img" src="/assets/charts/confusion_matrix.png" alt="Confusion matrix"></div></div><div class="grid two bottom-grid"><div class="card"><div class="card-title"><div><h3>Recent Detections</h3><small>Sample telemetry results</small></div></div><div class="table-wrap"><table><thead><tr><th>Time</th><th>Pressure</th><th>Flow</th><th>Temp</th><th>Result</th></tr></thead><tbody id="recent-body"></tbody></table></div></div><div class="card about"><div class="card-title"><div><h3>About This System</h3><small>Project overview</small></div></div><p>Sistem menggunakan <b>Multilayer Perceptron (MLP)</b> untuk melakukan klasifikasi kondisi pipeline berdasarkan 8 parameter operasi.</p><div class="chips"><span>8 Input Features</span><span>Sigmoid Output</span><span>Threshold 0.5</span></div></div></div>
+    </section>
+
+    <section id="dataset" class="page"><div class="section-head"><div><span class="eyebrow">DATA EXPLORATION</span><h2>Dataset SCADA</h2><p>Data telemetry yang digunakan untuk membangun model klasifikasi.</p></div></div><div class="stats-grid"><div class="stat-card blue"><span>Rows</span><strong>1,000</strong><small>dataset</small></div><div class="stat-card purple"><span>Columns</span><strong>13</strong><small>original</small></div><div class="stat-card green"><span>Normal</span><strong>694</strong><small>69.4%</small></div><div class="stat-card pink"><span>Anomaly</span><strong>306</strong><small>30.6%</small></div></div><div class="card"><div class="card-title"><div><h3>Model Features</h3><small>8 fitur yang masuk ke MLP</small></div></div><div class="feature-grid"><div>Pressure</div><div>Flow Rate</div><div>Temperature</div><div>Valve Status</div><div>Pump State</div><div>Pump Speed</div><div>Compressor State</div><div>Energy Consumption</div></div><div class="note">Kolom <b>target</b> digunakan sebagai label. <b>event_type</b>, timestamp, dan segment_id tidak digunakan sebagai input model.</div></div></section>
+
+    <section id="prediction" class="page"><div class="section-head"><div><span class="eyebrow">LIVE PREDICTION</span><h2>Pipeline Condition Detection</h2><p>Masukkan nilai sensor, lalu jalankan model MLP.</p></div></div><div class="prediction-layout"><div class="card form-card"><div class="form-grid"><label>Pressure<input id="pressure" type="number" step="0.01" value="75.2"></label><label>Flow Rate<input id="flow_rate" type="number" step="0.01" value="4.1"></label><label>Temperature<input id="temperature" type="number" step="0.01" value="32.5"></label><label>Valve Status<select id="valve_status"><option value="1">1 — Open</option><option value="0">0 — Closed</option><option value="2">2 — Other</option></select></label><label>Pump State<select id="pump_state"><option value="1">1 — Running</option><option value="0">0 — Off</option></select></label><label>Pump Speed<input id="pump_speed" type="number" step="0.1" value="1400"></label><label>Compressor State<select id="compressor_state"><option value="1">1 — Running</option><option value="0">0 — Off</option></select></label><label>Energy Consumption<input id="energy_consumption" type="number" step="0.01" value="35.2"></label></div><button class="primary full" onclick="predict()">⌕ Detect Condition</button><div class="form-hint">Output MLP menggunakan probabilitas sigmoid dengan decision threshold 0.5.</div></div><div id="result-card" class="result-card normal"><span class="eyebrow">PREDICTION RESULT</span><div id="result-label">NORMAL</div><p id="result-description">Pipeline diprediksi berada dalam kondisi normal.</p><div class="prob-row"><div><span>Normal Probability</span><b id="normal-prob">—</b></div><div><span>Anomaly Probability</span><b id="anomaly-prob">—</b></div></div></div></div></section>
+
+    <section id="team" class="page"><div class="section-head"><div><span class="eyebrow">OUR TEAM</span><h2>Meet the Team</h2><p>Profil anggota dan akses repository project.</p></div><a id="team-github" class="primary link-btn" href="https://github.com/USERNAME/scada-pipeline-anomaly-detection" target="_blank">⌘ Project GitHub ↗</a></div><div id="team-grid" class="team-grid"></div></section>
+  </main>
+</div>
+<script src="/assets/app.js"></script>
+</body></html>
